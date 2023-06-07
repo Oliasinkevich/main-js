@@ -74,6 +74,12 @@
             }
         });
 
+        // или
+
+        document.addEventListener('click', function (e) {
+            console.log(`Класс "super_element" ${e.target.classList.contains('super_element') ? 'присутствует' : 'отсутствует'} в элементе "${e.target.tagName.toLowerCase()}".`);
+        });
+
         // 4. Сделайте, чтобы при наведении на textarea в консоли появлялось сообщение: "Вы навели на textarea."
 
         const textareaEl = document.querySelector('textarea');

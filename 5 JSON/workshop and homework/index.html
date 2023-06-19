@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding-left: calc(50% - 750px);
+        padding-right: calc(50% - 750px);
+    }
+
+    .content {
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .id {
+        border: 1px solid red;
+        text-align: center;
+        width: 450px;
+    }
+</style>
+
+<body>
+    <!-- Задание 3 -->
+
+    <!-- Создать файл index.html
+Подключить data.js
+Добавить блок <div class="content"></div>
+Создать переменную data и добавить в нее JSON данные из файла data.js
+Вывести в консоль массив data
+С помощью foreach обойти массив data
+Вывести любые текстовые значение из данных в консоль -->
+
+    <!-- Задание 4 -->
+
+    <!-- Создать все необходимые заголовки, параграфы изображения (из данных json)
+Добавить все содержимое в блок контент
+* Добавить произвольные стили для добавленных элементов -->
+
+    <!-- * -->
+    <!-- почитать -->
+    <!-- https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch -->
+
+    <!-- fetch('http://example.com/movies.json')
+    .then((response) => {
+    return response.json();
+    })
+    .then((data) => {
+    console.log(data);
+    }); -->
+
+    <!-- https://cat-fact.herokuapp.com/facts -->
+
+    <div class="content"></div> 
+
+    <script src="data.js"></script>
+    <script>
+        const data = JSON.parse(dataInfo);
+        console.log(data);
+
+        const contentEl = document.querySelector('.content');
+
+        data.forEach(dataElement => {
+
+            const IdEl = document.createElement('div');
+            IdEl.className = 'id'
+            IdEl.textContent = dataElement.id;
+            contentEl.append(IdEl);
+
+            const UserEl = document.createElement('h1');
+            UserEl.textContent = dataElement.user;
+            IdEl.append(UserEl);
+
+            const TextEl = document.createElement('p');
+            TextEl.textContent = dataElement.text;
+            IdEl.append(TextEl);
+
+            const SourceEl = document.createElement('h3');
+            SourceEl.textContent = dataElement.source;
+            IdEl.append(SourceEl);
+
+            const updatedAtEl = document.createElement('h4');
+            updatedAtEl.textContent = dataElement.updatedAt;
+            IdEl.append(updatedAtEl);
+
+            const typeEl = document.createElement('h2');
+            typeEl.textContent = dataElement.type;
+            IdEl.append(typeEl);
+
+        });
+
+        // или
+
+        // fetch('https://cat-fact.herokuapp.com/facts')
+        //     .then((response) => {
+        //         return response.json();
+        //     })
+        //     .then((data) => {
+        //         data.forEach(item => {
+        //             const textEl = document.createElement('p');
+        //             textEl.textContent = item.text;
+        //             contentEl.append(textEl)
+        //         });
+        //     });
+
+
+    </script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProductCards</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Задание 1
+    Дан макет
+    https://www.figma.com/file/mZwLT9fKktsWuVyfQRoST1/shop-(Copy)-(Copy)?node-id=73%3A140 
+    в котором представлены товары на странице корзины.
+    Необходимо создать файл data.js в котором создать переменную dataProducts в которую присвоить JSON данные по товарам.
+    Вам нужно самостоятельно создать JSON данные (не забыть про кавычки для ключей и значений
+    Добавить все данные из макета, чтобы в дальнейшим по ним мы смогли создать вёрстку) -->
+
+    <!-- Задание 2
+    Создаём вёрстку по данному макету. Добавляем все теги и стили для них, чтобы получилось один в один как в макете
+    Пока данные для шаблонизации использовать не нужно -->
+
+    <div class="content">
+        <!-- <div class="product">
+            <a href="#">
+                <img class="product__img" src="" alt="1st product photo">
+            </a>
+            <div class="product__text">
+                <h2 class="product__name"></h2>
+                <p class="product__price">Price: <span class="product__price_span"></span></p>
+                <p class="product__color"></p>
+                <p class="product__size"></p>
+                <p class="product__quantity">Quantity: <input class="product__quantity_span" type="text" value=""></p>
+            </div>
+            <img class="product__close" src="./img/closeIcon.svg" alt="closeIcon">
+        </div> -->
+    </div>
+
+    <script src="data.js"></script>
+    <script>
+        // Задание 3
+        // Создаём блоки с помощью javascript для этого используем данные из dataProducts
+        // Формируем товары на основе нашей вёрстки
+        // Проверяем, как будет выглядеть сайт, если в json данных, добавить еще один объект с товаром(в вёрстке должен появиться еще один блок, на основе этих данных)
+
+        const data = JSON.parse(dataProducts);
+        console.log(data);
+
+        const contentEl = document.querySelector('.content');
+
+        data.forEach(dataProduct => {
+
+            const productEl = document.createElement('div');
+            productEl.className = 'product';
+            contentEl.append(productEl);
+
+            const aEl = document.createElement('a');
+            aEl.href = '#';
+            productEl.append(aEl);
+
+            const imgEl = document.createElement('img');
+            imgEl.className = 'product__img';
+            imgEl.alt = 'product photo';
+            imgEl.src = dataProduct.img;
+            aEl.append(imgEl);
+
+            const productTextEl = document.createElement('div');
+            productTextEl.className = 'product__text';
+            productEl.append(productTextEl);
+
+            const productNameEl = document.createElement('h2');
+            productNameEl.className = 'product__name';
+            productNameEl.textContent = dataProduct.name;
+            productTextEl.append(productNameEl);
+
+            const productPriceEl = document.createElement('p');
+            productPriceEl.className = 'product__price';
+            productPriceEl.textContent =  'Price: ';
+            productTextEl.append(productPriceEl);
+
+            const productPriceSpanEl = document.createElement('span');
+            productPriceSpanEl.className = 'product__price_span';
+            productPriceSpanEl.textContent = `$${dataProduct.price}`;
+            productPriceEl.append(productPriceSpanEl);
+
+            const productColorEl = document.createElement('p');
+            productColorEl.className = 'product__color';
+            productColorEl.textContent = `Color: ${dataProduct.color}`;
+            productTextEl.append(productColorEl);
+
+            const productSizeEl = document.createElement('p');
+            productSizeEl.className = 'product__size';
+            productSizeEl.textContent = `Size: ${dataProduct.size}`;
+            productTextEl.append(productSizeEl);
+
+            const productQuantityEl = document.createElement('p');
+            productQuantityEl.className = 'product__quantity';
+            productQuantityEl.textContent = 'Quantity: '
+            productTextEl.append(productQuantityEl);
+
+            const productQuantitySpanEl = document.createElement('input');
+            productQuantitySpanEl.className = 'product__quantity_span';
+            productQuantitySpanEl.value = dataProduct.quantity;
+            productQuantityEl.append(productQuantitySpanEl);
+        });
+    </script>
+</body>
+
+</html>

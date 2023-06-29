@@ -1,0 +1,65 @@
+body {
+    margin: 0;
+    padding: 100px;
+    margin: 0 auto;
+}
+
+button {
+    border: none;
+    background: none;
+}
+
+svg {
+    fill: white;
+}
+
+svg:hover {
+    fill: tomato;
+}
+
+svg:active {
+    fill: white;
+    stroke: tomato;
+}
+
+.container {
+    width: 100%;
+    position: relative;
+}
+
+.video {
+    width: 600px;
+}
+
+.play-wrp {
+    left: 20px;
+    bottom: 7%;
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pause-wrp {
+    left: 32%;
+    bottom: 47%;
+    position: absolute;
+}
+
+.pause svg {
+    width: 30px;
+    height: 30px;
+}
+
+.progress {
+    display: block;
+    background-color: white;
+    border-radius: 50%;
+    width: 70%;
+    height: 20px;
+    margin-right: 200px;
+}
+
+.time {
+    color: white;
+}

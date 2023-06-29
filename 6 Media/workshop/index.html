@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Задание
+    1. Создание медиа плеера
+    2. Создать файл index.html
+    3. Создать папку img в которую загрузить изображение
+    кнопок play, pause
+    4. Скачать произвольное видео из интернета
+    5. Добавить Тег видео в html
+    6. Продумать внешний вид progress и volume
+    7. Продумать время проигрывателя
+    8. Реализовать функционал своего собственного видеоплеера -->
+
+    <!-- мини тайминги
+    1. Скачать все картинки (найти макет по желанию)
+    2. Добавляете html добавляете все элементы для
+    управления видео
+    3. Реализуем кнопки play, pause
+    4. время и ползунки
+    5. Собираем внешний вид -->
+
+    <!-- https://www.figma.com/file/O2HddtGGejUpybMw876uxc/Video-Site-(Community)?type=design&node-id=101-65&mode=design&t=U0PfFaObzroUlYYt-0 -->
+
+    <div class="container">
+        <video class="video" src="video.mp4"></video>
+        <div class="play-wrp">
+            <button class="play">
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M2.2 2.86327C2.2 1.61155 3.57252 0.844595 4.63855 1.50061L12.9857 6.63731C14.0009 7.26209 14.0009 8.73784 12.9857 9.36262L4.63855 14.4993C3.57252 15.1553 2.2 14.3884 2.2 13.1367V2.86327Z" />
+                </svg>
+            </button>
+            <input type="range" class="progress" min="0" value="0" />
+            <!-- <input type="range" class="volume" value="10"> -->
+            <span class="time">0:00</span>
+        </div>
+        <div class="pause-wrp">
+            <button class="pause">
+                <svg width="16" height="16" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M2.2 2.5C2.2 2.22386 2.42385 2 2.7 2H5.2C5.47614 2 5.7 2.22386 5.7 2.5V13.5C5.7 13.7761 5.47614 14 5.2 14H2.7C2.42385 14 2.2 13.7761 2.2 13.5V2.5Z" />
+                    <path
+                        d="M10.2 2.5C10.2 2.22386 10.4239 2 10.7 2H13.2C13.4761 2 13.7 2.22386 13.7 2.5V13.5C13.7 13.7761 13.4761 14 13.2 14H10.7C10.4239 14 10.2 13.7761 10.2 13.5V2.5Z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <script>
+
+        const playEl = document.querySelector('.play');
+        const pauseEl = document.querySelector('.pause');
+        const videoEl = document.querySelector('.video');
+        const progressEl = document.querySelector('.progress');
+        const timeEl = document.querySelector('.time');
+
+        pauseEl.addEventListener('click', () => {
+            videoEl.pause();
+        });
+
+        playEl.addEventListener('click', () => {
+            videoEl.play();
+        });
+
+        videoEl.addEventListener('timeupdate', () => {
+            console.log(videoEl.currentTime);
+            timeEl.textContent = videoEl.currentTime;
+        }, true);
+
+        videoEl.addEventListener('durationchange', () => {
+            progressEl.step = 0.0001;
+            console.log(videoEl.duration);
+            progressEl.max = videoEl.duration;
+        });
+
+    </script>
+
+
+
+
+
+</body>
+
+</html>
